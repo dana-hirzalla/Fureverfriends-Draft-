@@ -1,0 +1,286 @@
+ {% load static %}
+
+ <!DOCTYPE HTML>
+
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Furever Friends home page" />
+		<title>Furever Friends - A Rescue Pet Adoption Service</title>
+		<link rel="stylesheet" href="{% static 'styles/fureverstyle.css' %}"/>  
+		<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>   
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+	</head>
+		
+		<body>
+				<div id="header-logo">
+				<a href="../../home"><img src="{% static 'images/logo-subtitle.png' %}" alt="logo"></a>
+				</div>
+
+				<nav class="container">
+					<ul>
+						<li><a href="../../search">Search Pets</a></li>
+						<li><a href="../../profile">My Profile</a></li>
+						<li><a href="../../favourites">My Favourites</a></li>
+						<li><a href="/">Logout</a></li> 
+					</ul>
+				</nav>
+				<!---->
+				<div id="scroll_page">
+					<a href="#bottom"><img src="{% static 'images/scroll-icon.jpg' %}" style="width:30px;height:30px;"></a> 
+				</div>
+
+                <main class="container"> 
+					<p style="margin:20px; text-decoration:none"><a href="../../search">Search Pets</a>><a href="#" class="selected">{{ pet.petname|capfirst }}</a></p>
+					
+					<div id="pet-image">
+						<div class="image round">
+							<img src="{{ pet.image.url }}" alt="{{ pet.petname }}" style="width:200px;height:200px;"/>
+						</div>
+					</div>
+
+					<section id="table-petprofile">
+
+						<h1>{{ pet.petname|capfirst }} Profile &#128062;</h1>
+	
+						<table>
+							<colgroup>
+								<col width="5%" />
+							</colgroup>
+							<tr>
+								<th>Pet Name</th>
+								<td colspan="5">{{ pet.petname|capfirst }}</td>
+							</tr>
+							<tr >
+								<th>Description</th>
+								<td colspan="5">{{ profile.description|capfirst }}</td>
+							</tr>
+							<tr>
+								<th rowspan="2">Details</th>
+								<td>Vaccinations?</td> 
+								<td>Type</td> 
+								<td>Sex</td> 
+								<td>Microchipped?</td> 
+								<td>Desexed?</td> 
+							</tr>
+							<tr>
+								<td>{{ pet.vaccination|capfirst }}</td>
+								<td>{{ pet.pettype.pettype|capfirst }}</td>
+								<td>{{ pet.gender.gender|capfirst }}</td>
+								<td>{{ pet.microchip }}</td>
+								<td>{{ pet.desex }}</td>									
+							</tr>
+							<tr>
+								<th rowspan="2">Details</th>
+								<td>Breed</td> 
+								<td>Age (years)</td> 
+								<td>Weight (kg)</td> 
+								<td>Height (cm)</td> 
+								<td>Length (cm)</td> 
+							</tr>
+							<tr>
+								<td>{{ pet.breed.breed }}</td>
+								<td>{{ pet.age }}</td>
+								<td>{{ pet.weight }}</td>
+								<td>{{ pet.height }}</td> 
+								<td>{{ pet.length }}</td> 
+							</tr>
+							<tr>
+								<th rowspan="2">Levels</th>
+								<td>Affection</td>
+								<td>Energy</td>
+								<td>Playfulness</td>
+								<td>Shyness</td>
+								<td>Tolerance</td>
+							</tr>
+							<tr>
+								{% for level in levels %}
+								{% if level == 1 %}
+								<td> &#9733; &#9734; &#9734; &#9734; &#9734; </td>
+								{% elif level == 2 %}
+								<td> &#9733; &#9733; &#9734; &#9734; &#9734; </td>
+								{% elif level == 3 %}
+								<td> &#9733; &#9733; &#9733; &#9734; &#9734; </td>
+								{% elif level == 4 %}
+								<td> &#9733; &#9733; &#9733; &#9733; &#9734; </td>
+								{% elif level == 5 %}
+								<td> &#9733; &#9733; &#9733; &#9733; &#9733; </td>
+								{% else %}
+								<td></td>
+								{% endif %}
+								{% endfor %}
+							</tr>
+							<tr >
+								<th>Pet History</th>
+								<td colspan="5">{{ profile.history|capfirst }}</td>
+							</tr>
+							<tr >
+								<th>Health Details</th>
+								<td colspan="5">{{ profile.healthdetails|capfirst }}</td>
+							</tr>
+							<tr >
+								<th>Special Needs</th>
+								<td colspan="5">{{ profile.specialneeds|capfirst }}</td>
+							</tr>
+						</form>
+						</table>
+						
+						{% if userAdoptThisPetStatus == 1 %}
+						<a href="action" class="disabledAdopt" id="accept">Adoption Pending..</a>
+						{% elif userAdoptStatus == 1 %}
+						<a href="action" class="disabledAdopt" id="accept">(you have already reserved a pet)</a>
+						{% elif petAdoptStatus == 1 %}
+						<a href="action" class="disabledAdopt" id="accept">(reserved by another user)</a>
+						{% else %}
+						<a href="{% url 'reservePet' pet.pet_id %}" class="action" id="accept" style="padding: 10px, 5px; margin-left:10px;">Adopt!</a>
+						{% endif %}
+						
+						{% if favStatus == 1 %}
+						<a href="{% url 'removeFromFavourites' pet.pet_id %}" class="action" id="accept" style="padding: 10px, 5px; background-color: orange;">❤ Remove From Favourites ❤</a>
+						{% else %}
+						<a href="{% url 'addToFavourites' pet.pet_id %}" class="action" id="accept" style="padding: 10px, 5px;">❤ Add to Favourites ❤</a>
+						{% endif %}
+
+                        <div>
+                            {% for message in messages %}
+                            <h3> {{message}} </h3>
+                            {% endfor %}
+                        </div>
+
+
+					</section>
+
+					<section id="hiddentable-petprofile">
+
+						<table>
+							<tr>
+								<td>Pet name</td>
+								<td>{{ pet.petname|capfirst }}</td>
+							</tr>
+							<tr >
+								<td>Pet Description</td>
+								<td>{{ profile.description|capfirst }}</td>
+							</tr>
+							<tr>
+								<td>Vaccinations?</td> 
+								<td>{{ pet.vaccination|capfirst }}</td>
+							</tr>
+							<tr>
+								<td>Type</td> 
+								<td>{{ pet.pettype.pettype|capfirst }}</td>								
+							</tr>
+							<tr>
+								
+								<td>Sex</td> 
+								<td>{{ pet.gender.gender|capfirst }}</td>
+							</tr>
+							<tr>
+								<td>Microchipped?</td> 
+								<td>{{ pet.microchip }}</td>
+							</tr>
+							<tr>
+								<td>Desexed?</td> 
+								<td>{{ pet.desex }}</td>	
+							</tr>
+						   <tr>
+							   <td>Breed</td>
+							   <td>{{ pet.breed.breed }}</td>
+						   </tr> 
+						   <tr>
+							   <td>Age (years)</td> 
+							   <td>{{ pet.age }}</td>
+							</tr> 
+							<tr>
+							   <td>Weight (kg)</td> 
+							   <td>{{ pet.weight }}</td>
+							</tr>
+							<tr>
+							   <td>Height (cm)</td>
+							   <td>{{ pet.height }}</td>
+							</tr>              
+							<tr>
+							   <td>Length (cm)</td>
+							   <td>{{ pet.length }}</td> 
+							</tr>    
+				
+							<tr>
+								<td>Affection</td>
+								<td> &#9733; &#9733; &#9733; &#9733; &#9733; </td>
+							</tr>
+							<tr>
+								<td>Energy</td>
+								<td> &#9733; &#9733; &#9733; &#9733; &#9733; </td>
+				
+							</tr>
+							<tr>
+								<td>Playfulness</td>
+								<td> &#9733; &#9733; &#9733; &#9733; &#9733; </td>
+				
+							</tr>
+							<tr>
+								<td>Shyness</td>
+								<td> &#9733; &#9733; &#9733; &#9733; &#9733; </td>
+				
+							</tr>
+							<tr>
+								<td>Tolerance</td>
+								<td> &#9733; &#9733; &#9733; &#9733; &#9733; </td>
+							</tr>
+							<tr >
+								<td>Pet History</th>
+								<td>{{ profile.history|capfirst }}</td>
+							</tr>
+							<tr >
+								<td>Health Details</th>
+								<td>{{ profile.healthdetails|capfirst }}</td>
+							</tr>
+							<tr >
+								<td>Special Needs</th>
+								<td>{{ profile.specialneeds|capfirst }}</td>
+							</tr>
+						</form>
+						</table>
+						
+						{% if userAdoptThisPetStatus == 1 %}
+						<a href="action" class="disabledAdopt" id="accept">Pending..</a>
+						{% elif userAdoptStatus == 1 %}
+						<a href="action" class="disabledAdopt" id="accept">(you have already reserved a pet)</a>
+						{% elif petAdoptStatus == 1 %}
+						<a href="action" class="disabledAdopt" id="accept">Adopt!</a>
+						{% else %}
+						<a href="{% url 'reservePet' pet.pet_id %}" class="action" id="accept" style="padding: 10px, 5px; margin-left:10px;">Adopt!</a>
+						{% endif %}
+						
+						{% if favStatus == 1 %}
+						<a href="{% url 'removeFromFavourites' pet.pet_id %}" class="action" id="accept" style="padding: 10px, 5px; background-color: orange;">❤ Remove From Favourites ❤</a>
+						{% else %}
+						<a href="{% url 'addToFavourites' pet.pet_id %}" class="action" id="accept" style="padding: 10px, 5px;">❤ Add to Favourites ❤</a>
+						{% endif %}
+
+						<div>
+                            {% for message in messages %}
+                            <h3> {{message}} </h3>
+                            {% endfor %}
+                        </div>
+
+					</section>
+
+				</main>
+				
+				<footer>
+					<p>©FureverFriends 2020</p>
+				</footer>
+			
+				
+				<script>
+					$("a[href='#bottom']").click(function() {
+					$("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow");
+					return true;
+				});
+				</script>
+                
+
+        </body>
+</html>
+       
