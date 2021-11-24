@@ -13,22 +13,65 @@
 			<div class="wrapper">
 
 				<div id="header-logo">
-					<a href="index.html"><img src="images/logo-subtitle.png" alt="logo"></a>
+					<a href="/"><img src="{% static 'images/logo-subtitle.png' %}" alt="logo"></a>
 				</div>
 
 				<nav class="container">
 					<ul>
-						<li><a href="login.html">Login</a></li> <!-- "accounts/login" -->
-						<li><a href="about-us.html" class="selected">About Us</a></li>
-						<li><a href="contact-us.html">Contact Us</a></li>
+						<li><a href="login">Login</a></li>
+						<li><a href="aboutUs" class="selected">About Us</a></li>
+						<li><a href="contactUs">Contact Us</a></li>
 					</ul>
-                </nav>
-                <main class="container">
-					<h1>About Us Page</h1>
-					<p>This is the about us page</p>
-				</main>
-                
+				</nav>
+				<!---->
+				<div id="scroll_page">
+					<a href="#bottom"><img src="{% static 'images/scroll-icon.jpg' %}" style="width:30px;height:30px;"></a> 
+				</div>
 
+                <main class="container" style="margin-top: 70px;">
+					<h1>About us Page</h1>
+					<section style="margin-right:20%; margin-left: 20%; margin-top: 5%; margin-bottom: 20%">
+		
+						<h2>&#128062;Sad Reality</h2>
+						<p style="text-align: justify; font-size: large;">In a time where pets in shelters are increasing in numbers and too few people consider adoption, 
+							an excessive number of abandoned pets are in shelters all around the country. In Australia between 2018 and 2019, 33,863 
+							dogs were received by the RSPCA, along with 51,170 cats, and 39,113 other animals. Of these, 4,308 dogs, 11,740 cats, and 
+							19,541 other animals were euthanised (RSPCA 2019). The potential benefits of our application "Furever Friends" are the 
+							reduction of these numbers.</p>
+
+						<h2>&#128062;Business Problem</h2>
+						<p style="text-align: justify; font-size: large;">Part of the problem is due to too many people who are uneducated about pet ownership 
+							and don’t consider the responsibilities that come with it. We are aiming to address both of these underlying
+							problems, by implementing a system to provide people with a platform to search for, and adopt their pets of 
+							choice in a simple process, while attempting to filter out unsuitable pet owners.</p>
+
+						<h2>&#128062;Our Solution</h2>
+						<p style="text-align: justify; font-size: large;">Our match-making system "Furever Friends" aims to help reduce euthanized pets by making the adoption process
+							easier for people to adopt pets in shelters instead of buying them elsewhere. Our system also aims to reduce animal
+							neglect by educating people who may be less aware of the responsibilities, so that they may seek to learn more about
+							their pet’s welfare.</p>
+						
+						<h2>&#128062;Notice</h2>
+						<p style="text-align: justify; font-size: large;">This web application, Furever Friends: a Rescue Pet adoption service, has been 
+							a project in which a group of students created a matchmaking system for the course Programming Project, SP 3, 2020. 
+							Click <a href="contactUs" >here</a> to view the students involved in the team. Special Thanks to the team's Supervisor, 
+						Mo Abbas who helped make this project possible</p>
+						</section>
+				</main>
+
+				
+				<script>
+					$("a[href='#bottom']").click(function() {
+					$("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow");
+					return true;
+				  });
+			  
+				  </script>
+
+			<footer>
+				<p>©FureverFriends 2020</p>
+			</footer>
+                
         </body>
 </html>
        
