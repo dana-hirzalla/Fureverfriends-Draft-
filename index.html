@@ -33,65 +33,70 @@
 			</div>
 			
 			<section id="one" class="wrapper">
-				<div class="inner">
-					<div class="flex flex-3">
-						<article>
-							<header>
-								<h3>1st section: About Us</h3>
-							</header>
-							<p>Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words </p>
-							
-						</article>
-						<article>
-							<header>
-								<h3>2nd section: Our Vision</h3>
-							</header>
-							<p>Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words </p>
-							
-						</article>
-						<article>
-							<header>
-								<h3>3rd Section: Article?</h3>
-							</header>
-							<p>Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words Words </p>
-							
-						</article>
+				<div style="position: relative; text-align: center;">
+					
+					<div class="box-1" >
+						<h3>&#128062;Sad Reality</h3>
+						<p style="text-align: justify;">In a time where pets in shelters are increasing in numbers and too few people consider adoption, 
+							an excessive number of abandoned pets are in shelters all around the country. In Australia between 2018 and 2019, 33,863 
+							dogs were received by the RSPCA, along with 51,170 cats, and 39,113 other animals. Of these, 4,308 dogs, 11,740 cats, and 
+							19,541 other animals were euthanised (RSPCA 2019). The potential benefits of our application "Furever Friends" are the 
+							reduction of these numbers.</p>
+					</div>
+
+					<div class="box-1">
+						<h3>&#128062;Business Problem</h3>
+						<p style="text-align: justify;"> 
+							Part of the problem is due to too many people who are uneducated about pet ownership 
+							and don’t consider the responsibilities that come with it. We are aiming to address both of these underlying
+							problems, by implementing a system to provide people with a platform to search for, and adopt their pets of 
+							choice in a simple process, while attempting to filter out unsuitable pet owners.</p>
+					</div>
+					
+						
+					<div class="box-1">
+						<h3>&#128062;Our Solution</h3>
+						<p style="text-align: justify;">
+							Our match-making system "Furever Friends" aims to help reduce euthanized pets by making the adoption process
+							easier for people to adopt pets in shelters instead of buying them elsewhere. Our system also aims to reduce animal
+							neglect by educating people who may be less aware of the responsibilities, so that they may seek to learn more about
+							their pet’s welfare.</p>
 					</div>
 				</div>
 			</section>
 
-		<!-- Two -->
-			<section id="two" class="wrapper style1 special">
-				<div class="inner">
-					<header>
-						<h2>Top Favourited Pets</h2>
-					</header>
-					<div class="flex flex-4">
-						<div class="box pet">
-							<div class="image round">
-								<img src="images/pic03.jpg" alt="Pet 1" />
+			<!-- Two -->
+				<section id="two" class="wrapper style1 special">
+					<div class="inner">
+						<header>
+							<h2>Top Favourited Pets*</h2>
+						</header>
+						<div class="search-results" id="bottom" style="position: relative; margin: auto; text-align: center;">
+							
+							{% for random in pets %}
+							<div class="box pet"style="display: inline-block">
+								<div class="image round">
+									<img src="{{ random.image.url }}" alt="random.petname" style="width:200px;height:200px;"/>
+								</div>
+								<h3>{{ random.petname|capfirst }}</h3>
+								<a href="{% url 'petProfileGuest' random.pet_id %}">View Profile</a>
 							</div>
-							<h3>Mr Snuggles</h3>
-						</div>
-						<div class="box pet">
-							<div class="image round">
-								<img src="images/pic04.jpg" alt="Pet 2" />
-							</div>
-							<h3>Snowy</h3>
-						</div>
-						<div class="box pet">
-							<div class="image round">
-								<img src="images/pic05.jpg" alt="Pet 3" />
-							</div>
-							<h3>Lassy</h3>
+							{% endfor %}
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+
+				<script>
+					$("a[href='#bottom']").click(function() {
+					$("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow");
+					return true;
+				});
+
+				</script>
+
 
 			<footer>
-				<p>@ Furever Friends 2020</p>
-				
+				<p>©FureverFriends 2020</p>
 			</footer>
 				
 		</body>
