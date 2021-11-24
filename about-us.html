@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE HTML>
+
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Furever Friends home page" />
+		<title>Furever Friends - A Rescue Pet Adoption Service</title>
+		<link rel="stylesheet" href="{% static 'fureverstyle.css' %}"/>
+	</head>
+		
+		<body>
+			<div class="wrapper">
+
+				<div id="header-logo">
+					<a href="index.html"><img src="{% static 'images/logo-subtitle.png' %}" alt="logo"></a>
+				</div>
+
+				<nav class="container">
+					<ul>
+						<li><a href="accounts/login">Login</a></li>
+						<li><a href="about-us.html" class="selected">About Us</a></li>
+						<li><a href="contact-us.html">Contact Us</a></li>
+					</ul>
+                </nav>
+                <main class="container">
+					<h1>About Us Page</h1>
+					<p>This is the about us page</p>
+				</main>
+                
+
+        </body>
+</html>
+       

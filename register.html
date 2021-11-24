@@ -1,0 +1,250 @@
+<!-- **BACKEND** 
+{% load static %}-->
+
+<!DOCTYPE HTML>
+
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Furever Friends home page" />
+        <title>Furever Friends - A Rescue Pet Adoption Service</title>
+        <link rel="stylesheet" href="fureverstyle.css"/>
+		<!--<link rel="stylesheet" href="{% static 'styles/fureverstyle.css' %}"/> -->
+	</head>
+		
+		<body>
+			<div class="wrapper">
+
+				<div id="header-logo">
+                    <a href="index.html"><img src="images/logo-subtitle.png" alt="logo"></a>                    
+					<!-- <a href="index.html"><img src="{% static 'images/logo-subtitle.png' %}" alt="logo"></a>--> 
+				</div>
+
+				<nav class="container">
+					<ul>
+                         <li><a href="login.html">Login</a></li> 
+						<!--<li><a href="login">Login</a></li>-->
+						<li><a href="about-us.html">About Us</a></li>
+						<li><a href="contact-us.html">Contact Us</a></li>
+					</ul>
+                </nav>
+                <main class="container">
+
+                    <h1>Register page</h1>
+                    
+                    <div class="register-cards" style="width:900px;">
+
+                        <div class="card1" style="width:400px; height:300px; margin:0 auto;">
+                            <h1 style="text-align: center;">Register as Pet Adopter</h1><br>
+                            <div style="margin:0 auto; text-align: center;">
+                               
+                                <form action="register" method="POST">
+                                    <!-- **BACKEND** 
+                                    {% csrf_token %}-->
+
+                                    <input type="text" id="name" name="name" placeholder="Enter Name"><br><br>
+                                    <input type="email" id="email" name="email" placeholder="Enter Email"><br><br>                                    
+                                    <input type="text" id="score" name="score" placeholder="Score" style="width: 50px;">                                   
+
+                                    <a href="#" class="screener-question" id="screener-question">Answer Screener Questions</a>  <br><br><br><br>                                 
+
+                                    <input type="submit" value="Register">
+                                </form>
+
+                            </div>
+                        
+                        </div>
+                          
+                        <div class="card2" style="width:400px; height:300px; margin:0 auto;">
+                            <h1 style="text-align: center;">Register as Shelter Admin</h1>
+                            <div style="margin:0 auto; text-align: center;">
+                                <form action="">
+                                    <input type="text" id="sheltername" name="sheltername" placeholder="Enter Shelter Name"><br><br>
+                                    <input type="text" id="shelteraddress" name="shelteraddress" placeholder="Enter Shelter Address"><br><br>
+                                    <input type="text" id="email" name="email" placeholder="Enter Shelter Email Address"><br><br>
+                                    <input type="text" id="website" name="website" placeholder="Enter Shelter Website"><br><br>
+                                    <input type="tel" id="contactNo" name="contactNo" placeholder="Enter Contact Number"><br><br>
+
+
+                                    <input type="submit" value="Register">
+                                </form>
+
+                            </div>
+                        
+                        </div>
+
+                    </div>
+
+                    <!-- **BACKEND** 
+                    <div class = "error">
+                        {% for message in messages %}
+                        <h3> {{message}} </h3>
+                        {% endfor %}
+                    </div>-->
+
+                    <div class = "popup">
+                        <div class = "screener-questions">
+							<a href="#"><img src="images/close.png" id="close" class="close"></a>
+
+                            <h1>Screener Questions</h1>
+							
+                                <form>
+                                <fieldset>
+                                    <!-- Thinking this question can be an automatic fail if 'no'? before answering any more questions -->
+                                    <h3>Q1- Are you 18 or over?</h3>
+                                    <input type="radio" id="q1-1" name="q1">
+                                    <label for="q1-1">No</label><br>
+                                    <input type="radio"id="q1-2" name="q1">
+                                    <label for="q1-2">Yes</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q2- Have you ever owned a pet before?</h3>
+                                    <input type="radio" id="q2-1" name="q2" value="1">
+                                    <label for="q2-1">No, this would be my first time</label><br>
+                                    <input type="radio" id="q2-2" name="q2" value="2">
+                                    <label for="q2-2">Yes</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q3- Are you planning on giving this pet as a gift to someone else?</h3>
+                                    <input type="radio" id="q3-1" name="q3" value="2">
+                                    <label for="q3-1">No, this pet is for myself or a family pet</label><br>
+                                    <input type="radio" id="q3-2" name="q3" value="0">
+                                    <label for="q3-2">Yes, this is a surprise gift</label><br>
+                                    <input type="radio" id="q3-3" name="q3" value="1">
+                                    <label for="q3-3">Yes, but the person has asked for this pet as a gift</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q4- Who will be mainly responsible for this pet?</h3>
+                                    <input type="radio" id="q4-1" name="q4" value="2">
+                                    <label for="q4-1">Me and/or my partner</label><br>
+                                    <input type="radio" id="q4-2" name="q4" value="0">
+                                    <label for="q4-2">Young children</label><br>
+                                    <input type="radio" id="q4-3" name="q4" value="1">
+                                    <label for="q4-3">Teenage children</label><br>
+                                    <input type="radio" id="q4-4" name="q4" value="1">
+                                    <label for="q4-4">Another adult</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q5 - Who in your home is happy with the new pet adoption?</h3>
+                                    <input type="radio" id="q5-1" name="q5-1" value="2">
+                                    <label for="q5-1">Everyone</label><br>
+                                    <input type="radio" id="q5-2" name="q5" value="1">
+                                    <label for="q5-2">Some are happy, some are not</label><br>
+                                    <input type="radio" id="q5-3" name="q5" value="0">
+                                    <label for="q5-3">Only me and no one else</label><br>
+                                    <input type="radio" id="q5-4" name="q5" value="2">
+                                    <label for="q5-4">Only me, but I live alone</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q6 - If you are thinking of adopting a dog, what kind of space will they live in?</h3>
+                                    <input type="radio" id="q6-1" name="q6" value="2">
+                                    <label for="q6-1">A property with a backyard</label><br>
+                                    <input type="radio" id="q6-2" name="q6" value="0">
+                                    <label for="q6-2">A property with no backyard</label><br>
+                                    <input type="radio" id="q6-3" name="q6" value="1">
+                                    <label for="q6-3">A property with no backyard, but they will be taken for regular exercise</label><br>
+                                    <input type="radio" id="q6-4" name="q6" value="2">
+                                    <label for="q6-4">I am not considering adopting a dog</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q7 - What will be provided to the pet for stimulation when they are bored?</h3>
+                                    <input type="radio" id="q7-1" name="q7" value="2">
+                                    <label for="q7-1">Exercise or playtime</label><br>
+                                    <input type="radio" id="q7-2" name="q7" value="0">
+                                    <label for="q7-2">They'd be let outside to play by themselves</label><br>
+                                    <input type="radio" id="q7-3" name="q7" value="1">
+                                    <label for="q7-3">Long lasting chewy treats or interactive toys</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q8 - How would the pet be taken care of if their owner/family were away from home for more than a day?</h3>
+                                    <input type="radio" id="q8-1" name="q8" value="2">
+                                    <label for="q8-1">They would go along too</label><br>
+                                    <input type="radio" id="q8-2" name="q8" value="2">
+                                    <label for="q8-2">The pet would be looked after by friends/relatives</label><br>
+                                    <input type="radio" id="q8-3" name="q8" value="0">
+                                    <label for="q8-3">The pet would be left at home, they’ll be okay alone</label><br>
+                                    <input type="radio" id="q8-4" name="q8" value="2">
+                                    <label for="q8-4">The pet would be taken to a pet-sitting kennel</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q9 - Would this pet be cared for it's entire life?</h3>
+                                    <input type="radio" id="q9-1" name="q9" value="1">
+                                    <label for="q9-1">Yes</label><br>
+                                    <input type="radio" id="q9-2" name="q9" value="0">
+                                    <label for="q9-2">No</label><br>
+                                    <input type="radio" id="q9-3" name="q9" value="0">
+                                    <label for="q9-3">Unsure</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q10 - What would you feed the pet?</h3>
+                                    <input type="radio" id="q10-1" name="q10" value="2">
+                                    <label for="q10-1">Hygienic nutritional food</label><br>
+                                    <input type="radio" id="q10-2" name="q10" value="0">
+                                    <label for="q10-2">Dinner leftovers</label><br>
+                                    <input type="radio" id="q10-3" name="q10" value="1">
+                                    <label for="q10-3">The cheapest brand of supermarket food</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q11 - Why do you want to adopt a pet?</h3>
+                                    <input type="radio" id="q11-1" name="q11" value="1">
+                                    <label for="q11-1">Companion for another pet</label><br>
+                                    <input type="radio" id="q11-2" name="q11" value="1">
+                                    <label for="q11-2">Companion for myself</label><br>
+                                    <input type="radio" id="q11-3" name="q11" value="0">
+                                    <label for="q11-3">To breed pets</label><br>
+                                    <input type="radio" id="q11-4" name="q11" value="0">
+                                    <label for="q11-4">For hunting support animal</label>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q12 - How would you decide how much money to spend on your pet when it comes to flea/worm treatment, special food or vet bills?</h3>
+                                    <input type="radio" id="q12-1" name="q12" value="1">
+                                    <label for="q12-1">Listen to the Vet</label><br>
+                                    <input type="radio" id="q12-2" name="q12" value="0">
+                                    <label for="q12-2">Decide if the pet if worth the investment</label><br>
+                                    <input type="radio" id="q12-4" name="q12" value="1">
+                                    <label for="q12-3">Spend whatever is necessary for the pet’s health</label><br>
+                                </fieldset>
+                                <fieldset>
+                                    <h3>Q13 - Do any of your family members have any allergies that would be affected by adopting a pet?</h3>
+                                    <input type="radio" id="q13-1" name="q13" value="0">
+                                    <label for="q13-1">Yes</label><br>
+                                    <input type="radio" id="q13-2" name="q13" value="1">
+                                    <label for="q13-2">No</label><br>
+                                </fieldset>
+                                    
+                                <input class="sq-submit" type="submit" value="Submit">
+                                </form>
+                                 
+
+
+                        </div>
+						
+						 
+
+                    </div>
+					<footer>
+						<p>footer here</p>
+						
+					</footer>
+
+                </main>
+
+           
+                
+           
+
+            <script>
+
+                document.getElementById("screener-question").addEventListener("click", function(){
+                    document.querySelector(".popup").style.display = "flex"});
+
+                document.getElementById("close").addEventListener("click", function(){
+                    document.querySelector(".popup").style.display = "none"});
+            </script>  
+
+        </body>
+
+          
+
+</html>
+       

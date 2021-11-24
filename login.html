@@ -1,0 +1,59 @@
+ <!--{% load static %}-->
+<!DOCTYPE HTML>
+
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Furever Friends home page" />
+		<title>Furever Friends - A Rescue Pet Adoption Service</title>
+		<link rel="stylesheet" href="fureverstyle.css"/> <!--{% static 'styles/fureverstyle.css' %} -->
+	</head>
+		
+		<body>
+			<div class="wrapper">
+
+				<div id="header-logo">
+					<a href="index.html"><img src="images/logo-subtitle.png" alt="logo"></a><!--{% static 'images/logo-subtitle.png' %} -->
+				</div>
+
+				<nav class="container">
+					<ul>
+						<li><a href="login.html" class="selected">Login</a></li> <!-- remove .html-->
+						<li><a href="about-us.html">About Us</a></li>
+						<li><a href="contact-us.html">Contact Us</a></li>
+					</ul>
+                </nav>
+                <main class="container">
+ 
+                    <div class="login-card" style="width:400px; height: 200px; position: relative;">
+
+                        <h1 style="text-align:center;">Log in</h1>
+                        <div style="margin:0 auto; text-align: center;">
+                            <form action="login" method="post">
+                                <!-- {% csrf_token %} -->
+                                <input type="text" id="username" name="username" placeholder="Enter Username"><br><br>
+                                <input type="text" id="password" name="password" placeholder="Enter Password"><br><br>
+                                
+                                <input type="submit" value="Login" id="login-button">
+                            </form>
+                        </div>
+
+                       <!-- <div>
+                            {% for message in messages %}
+                            <h3> {{message}} </h3>
+                            {% endfor %}
+                        </div>-->
+
+                    </div>
+
+                </main>
+                
+                
+            <footer>
+                <p>footer here</p>
+                
+            </footer>   
+
+        </body>
+</html>
+       
