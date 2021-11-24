@@ -76,9 +76,9 @@
 							{% for random in pets %}
 							<div class="box pet"style="display: inline-block">
 								<div class="image round">
-									<img src="{{ random.image.url }}" alt="random.petname" style="width:200px;height:200px;"/>
+									<img src="lassy.jpg" alt="random.petname" style="width:200px;height:200px;"/>
 								</div>
-								<h3>{{ random.petname|capfirst }}</h3>
+								<h3>Lassy{{ random.petname|capfirst }}</h3>
 								<a href="{% url 'petProfileGuest' random.pet_id %}">View Profile</a>
 							</div>
 							{% endfor %}
